@@ -16,19 +16,23 @@
 
     <div class="list-group mt-4">
         <?php foreach ($posts as $value) : ?>
-            <div class="card m-2">
+            <div class="card m-2 post">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between align-items-center">
-                        <h3 class="card-title"><?= $value["title"] ?></h3>
+                        <h3 class="card-title post-title"><?= $value["title"] ?></h3>
                         <p class="card-text"><?= date('d.m.Y H:i', strtotime($value["created_at"])) ?></p>
                     </div>
-                    <h4 class="card-subtitle mb-2 text-muted"><?= $value["category_name"] ?></h4>
 
-                    <h5 class="card-text"><?= $value["author"] ?></h5>
+                    <h4 class="d-none post-id"><?= $value['id'] ?></h4>
+                    <h4 class="d-none post-category-id"><?= $value['category_id'] ?></h4>
 
-                    <p class="card-text"><?= $value["content"] ?></p>
+                    <h4 class="card-subtitle mb-2 text-muted post-category-name"><?= $value["category_name"] ?></h4>
+
+                    <h5 class="card-text post-author"><?= $value["author"] ?></h5>
+
+                    <p class="card-text post-content"><?= $value["content"] ?></p>
                     <div class="button-group" role="group">
-                        <button type="button" class="btn btn-warning disabled">Upravit</button>
+                        <button type="button" class="btn btn-warning edit-post">Upravit</button>
                         <button type="button" class="btn btn-danger disabled">Smazat</button>
                     </div>
                 </div>
@@ -70,6 +74,46 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#createPostModal">Zavřít</button>
+                    <button type="submit" class="btn btn-primary">Vytvořit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" ref="modal" id="EditPostModal" tabindex="-1" aria-labelledby="EditPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="EditPostModalLabel">Tvorba příspěvku</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" class="post-edit-form">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h2 class="fs-5">Kategorie</h2>
+                        <select class="form-select form-select-lg" id="category" name="category" required>
+                            <option value="" selected disabled>Vyber kategorii</option>
+                            <?php foreach ($categories as $category) : ?>
+                                <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <h2 class="fs-5">Titulek</h2>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <h2 class="fs-5">Autor</h2>
+                        <input type="text" class="form-control form-control-lg" id="author" name="author" required>
+                    </div>
+                    <div class="mb-3">
+                        <h2 class="fs-5">Obsah</h2>
+                        <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#EditPostModal">Zavřít</button>
                     <button type="submit" class="btn btn-primary">Vytvořit</button>
                 </div>
             </form>
