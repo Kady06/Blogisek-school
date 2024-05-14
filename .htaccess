@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Přesměrování všech požadavků na hlavní stránku s parametrem url
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /?url=$1 [L,QSA]
