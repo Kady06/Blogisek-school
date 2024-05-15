@@ -93,12 +93,12 @@
                     <div class="mb-3">
                         <h2 class="fs-5">Kategorie</h2>
                         <select class="form-select form-select-lg" id="category" name="category" required>
-                            <option value="" selected disabled>Vyber kategorii</option>
                             <?php foreach ($categories as $category) : ?>
                                 <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <input type="hidden" id="id" name="id">
                     <div class="mb-3">
                         <h2 class="fs-5">Titulek</h2>
                         <input type="text" class="form-control form-control-lg" id="title" name="title" required>
@@ -111,10 +111,11 @@
                         <h2 class="fs-5">Obsah</h2>
                         <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
                     </div>
+                    <input type="hidden" id="type-edit" name="type-edit">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#EditPostModal">Zavřít</button>
-                    <button type="submit" class="btn btn-primary">Vytvořit</button>
+                    <button type="submit" class="btn btn-primary">Upravit</button>
                 </div>
             </form>
         </div>

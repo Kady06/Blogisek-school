@@ -34,6 +34,20 @@ class Administration_model
         }
     }
 
+    public function editPost(int $id, int $category, string $title, string $author, string $content) {
+        global $pdo;
+
+        $query = "UPDATE posts SET category_id = :category, title = :title, author = :author, content = :content WHERE id = :id";
+        $values = array(":id"=> $id, ":category"=> $category, ":title"=> $title, ":author"=> $author, ":content"=> $content);
+
+        try {
+            $pdo->prepare($query)->execute($values);
+            return "Příspěvek byl úspěšně upraven!";
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function getPosts(): array
     {
         global $pdo;

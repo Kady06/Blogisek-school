@@ -16,7 +16,12 @@ allPosts.forEach((post) => {
     let form = document.querySelector(".post-edit-form");
     
 
-    document.getElementById("EditPostModalLabel").textContent = "Úprava článku číslo: " + id;
+    document.querySelector("#EditPostModalLabel").textContent = "Úprava článku číslo: " + id;
+    form.querySelector("#category").value = category_id;
+    form.querySelector("#title").value = title;
+    form.querySelector("#content").value = content;
+    form.querySelector("#author").value = author;
+    form.querySelector("#id").value = id;
     
     let modal = new bootstrap.Modal(document.getElementById("EditPostModal"));
     modal.show();
