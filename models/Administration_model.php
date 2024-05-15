@@ -48,6 +48,20 @@ class Administration_model
         }
     }
 
+    public function deletePost(int $id) {
+        global $pdo;
+
+        $query = "DELETE FROM posts WHERE id = :id";
+        $values = array(":id" => $id);
+
+        try {
+            $pdo->prepare($query)->execute($values);
+            return "Příspěvek smazán";
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function getPosts(): array
     {
         global $pdo;
@@ -68,7 +82,7 @@ class Administration_model
     {
         global $pdo;
 
-        $query = "SELECT * FROM categories ORDER BY name";
+        $query = "SELECT * FROM categories ORDER BY name ASC";
         $stmt = $pdo->prepare($query);
 
         try {

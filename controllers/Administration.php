@@ -89,6 +89,19 @@ class administration
                     $data["errorMessage"] = "Něco se pokazilo!";
                 }
             }
+        } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["type-delete"])) {
+            $id = $_POST["id"];
+
+            if (empty($id)) {
+                $data["errorMessage"] = "Nastala chyba, zkuste to znovu!";
+            } else {
+                $result = $this->administration_model->deletePost($id);
+                if ($result) {
+                    $data["successMessage"] = $result;
+                } else {
+                    $data["errorMessage"] = "Něco se pokazilo";
+                }
+            }
         }
 
         $data["title"] = "Příspěvky";

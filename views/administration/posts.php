@@ -33,7 +33,7 @@
                     <p class="card-text post-content"><?= $value["content"] ?></p>
                     <div class="button-group" role="group">
                         <button type="button" class="btn btn-warning edit-post">Upravit</button>
-                        <button type="button" class="btn btn-danger disabled">Smazat</button>
+                        <button type="button" class="btn btn-danger delete-post">Smazat</button>
                     </div>
                 </div>
             </div>
@@ -116,6 +116,47 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#EditPostModal">Zavřít</button>
                     <button type="submit" class="btn btn-primary">Upravit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" ref="modal" id="DeletePostModal" tabindex="-1" aria-labelledby="DeletePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DeletePostModalLabel">Tvorba příspěvku</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" class="post-delete-form">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h2 class="fs-5">Kategorie</h2>
+                        <select class="form-select form-select-lg" id="category" name="category" disabled>
+                            <?php foreach ($categories as $category) : ?>
+                                <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <input type="hidden" id="id" name="id">
+                    <div class="mb-3">
+                        <h2 class="fs-5">Titulek</h2>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <h2 class="fs-5">Autor</h2>
+                        <input type="text" class="form-control form-control-lg" id="author" name="author" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <h2 class="fs-5">Obsah</h2>
+                        <textarea class="form-control" id="content" name="content" rows="5" disabled></textarea>
+                    </div>
+                    <input type="hidden" id="type-edit" name="type-delete">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Zavřít</button>
+                    <button type="submit" class="btn btn-danger">Smazat</button>
                 </div>
             </form>
         </div>
