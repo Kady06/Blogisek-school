@@ -30,7 +30,7 @@
 
                     <h5 class="card-text post-author"><?= $value["author"] ?></h5>
 
-                    <p class="card-text post-content"><?= $value["content"] ?></p>
+                    <p class="card-text post-content" style="white-space: pre-wrap;"><?= htmlspecialchars($value["content"]); ?></p>
                     <div class="button-group" role="group">
                         <button type="button" class="btn btn-warning edit-post">Upravit</button>
                         <button type="button" class="btn btn-danger delete-post">Smazat</button>

@@ -21,3 +21,9 @@ define("DB_HOST", "localhost:3307");
 define("DB_USER", "root");
 define("DB_PASSWORD", "");
 define("DB_SCHEMA", "blogisek");
+
+
+// define("DB_HOST", "localhost:3306");
+// define("DB_USER", "jankarli_blogisek");
+// define("DB_PASSWORD", "HovnoKleslo1234!");
+// define("DB_SCHEMA", "jankarli_blog_spse");

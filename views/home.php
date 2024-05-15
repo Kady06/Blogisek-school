@@ -23,7 +23,7 @@
                         <h5 class="card-text"><?= $value["author"] ?></h5>
                         <p class="card-text"><?= date('d.m.Y H:i', strtotime($value["created_at"])) ?></p>
                     </div>
-                    <p class="card-text"><?= $value["content"] ?></p>
+                    <p class="card-text" style="white-space: pre-wrap;"><?= htmlspecialchars($value["content"]); ?></p>
                     <div class="btn-group justify-content-right align-content-right w-100" role="group">
                         <button type="button" class="btn btn-success disabled">To se mi líbí</button>
                         <button type="button" class="btn btn-primary disabled">Komentovat</button>
