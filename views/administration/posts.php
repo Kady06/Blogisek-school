@@ -71,6 +71,7 @@
                         <h2 class="fs-5">Obsah</h2>
                         <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
                     </div>
+                    <input type="hidden" name="type-create" id="type-create">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#createPostModal">Zavřít</button>

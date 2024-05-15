@@ -13,6 +13,10 @@
     <?php if(isset($sub_current) && $sub_current == "posts"): ?>
     <script defer src="/scripts/posts.js"></script>
     <?php endif; ?>
+    <?php if(isset($current) && $current == "home"): ?>
+    <script defer src="/scripts/home.js"></script>
+    <?php endif; ?>
+
 
 </head>
 <body data-bs-theme="dark">
